@@ -1,13 +1,18 @@
 <nav class="navbar navbar-light navbar-fixed-top bg-faded">
-  <nav class="navbar navbar-light bg-faded">
-    <div class="nav navbar-nav">
-      <a class="nav-item nav-link active" href="#">
-        <img src="/logo.svg" height="30" class="d-inline-block align-top" alt="">
-      </a>
-      {{#link-to 'requests' class='nav-item nav-link'}} Requests {{/link-to}}
-      {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
+  <div class='container'>
+    <div class='row'>
+      <nav class="navbar navbar-light bg-faded">
+        <div class="nav navbar-nav">
+          <a class="nav-item nav-link active" href="#">
+            <img src="/logo.svg" height="30" class="d-inline-block align-top" alt="">
+          </a>
+          {{#link-to 'requests' class='nav-item nav-link'}} Requests {{/link-to}}
+          {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
+          <a href='#' class='nav-item nav-link float-xs-right'> Logout </a>
+        </div>
+      </nav>
     </div>
-  </nav>
+  </div>
 </nav>
 <br>
 <br>
