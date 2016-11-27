@@ -10,9 +10,12 @@
   <tbody>
     {{#each requests as |request|}}
       <tr>
-        <th>{{request.requestedBy}}</th>
+        <th>
+          <img src="{{request.requestedByAvatar}}" alt="{{request.requestedBy}}" height="30px">
+          {{request.requestedBy}}
+        </th>
         <td>
-          {{request.from}} → {{request.from}}
+          {{request.from}} → {{request.to}}
           <small class="text-muted">
             <br>
             5 days
@@ -22,7 +25,7 @@
           <span class="tag tag-pill tag-primary"> {{request.type}} </span>
           <small class="text-muted">
             <br>
-            {{request.reason}}
+            {{request.description}}
           </small>
         </td>
         <td>{{request.status}}</td>
