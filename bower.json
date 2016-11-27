@@ -3,6 +3,10 @@
   "dependencies": {
     "ember": "~2.9.0",
     "ember-cli-shims": "0.1.3",
-    "bootstrap": "~3.3.5"
+    "tether": "^1.3.7"
+  },
+  "devDependencies": {
+    "tether": "^1.3.7",
+    "bootstrap": "v4.0.0-alpha.5"
   }
 }
