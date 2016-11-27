@@ -1,5 +1,16 @@
 {{#if teams.length}}
-  List of available teams
+  Mesitis currently has {{teams.length}} teams set up.
+
+  <ul>
+    {{#each teams as |team|}}
+      <li>
+        <strong>{{team.name}}</strong>, with
+        {{team.count}} members.
+        <br>
+        {{team.descriptions}}
+      </li>
+    {{/each}}
+  </ul>
 {{else}}
   <div class="container">
     <div class="jumbotron">
