@@ -14,6 +14,10 @@ export default Ember.Route.extend({
       name: 'Frontend',
       count: 4,
       description: 'building interfaces'
+    }, {
+      name: 'Management',
+      count: 6,
+      description: 'strategy and stuff'
     }];
   }
 });
