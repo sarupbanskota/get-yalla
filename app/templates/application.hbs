@@ -1,5 +1,18 @@
-{{#link-to 'teams'}} Teams {{/link-to}}
-
+<nav class="navbar navbar-light navbar-fixed-top bg-faded">
+  <nav class="navbar navbar-light bg-faded">
+    <div class="nav navbar-nav">
+      <a class="nav-item nav-link active" href="#">
+        <img src="/logo.svg" height="30" class="d-inline-block align-top" alt="">
+      </a>
+      {{#link-to 'requests' class='nav-item nav-link'}} Requests {{/link-to}}
+      {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
+    </div>
+  </nav>
+</nav>
+<br>
+<br>
+<br>
+<br>
 <div class='container'>
   {{outlet}}
 </div>
