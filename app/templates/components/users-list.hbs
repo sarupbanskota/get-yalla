@@ -1,0 +1,31 @@
+Mesitis currently has {{users.length}} users on Yalla.
+<br>
+<br>
+<div class='card-columns'>
+  {{#each users as |user|}}
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">
+          <img height="30px" src="{{user.avatar}}" alt="{{user.name}}">
+          {{user.firstName}} {{user.lastName}}
+        </h4>
+        <p class="card-text">
+          <ul>
+            <li> {{user.country}} </li>
+            <li>
+              Joined {{moment-format user.DOJ 'D MMM YY'}}
+              <small class="text-muted"> ({{moment-to-now user.DOJ hidePrefix=true}} ago) </small>
+            </li>
+            <li> On {{user.contractType}} contract </li>
+          </ul>
+
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            {{user.firstName}} has 3 leaves coming up
+          </small>
+        </p>
+      </div>
+    </div>
+  {{/each}}
+</div>

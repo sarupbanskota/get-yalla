@@ -15,5 +15,6 @@ export default function() {
   this.get('/teams');
   this.get('/teams/:id');
   this.get('/requests');
+  this.get('/users');
 
 }
