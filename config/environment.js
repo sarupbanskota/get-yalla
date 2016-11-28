@@ -46,5 +46,23 @@ module.exports = function(environment) {
 
   }
 
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'index',
+    routeAfterAuthentication: 'protected',
+    routeIfAlreadyAuthenticated: 'protected'
+  };
+
+  ENV['auth0-ember-simple-auth'] = {
+    clientID: "LunQANruAcF7AWimiau8FxwvEf94UqXO",
+    domain: "getyalla.eu.auth0.com"
+  }
+
+  ENV['contentSecurityPolicy'] = {
+    'font-src': "'self' data: https://cdn.auth0.com",
+    'style-src': "'self' 'unsafe-inline'",
+    'script-src': "'self' 'unsafe-eval' 'unsafe-inline' https://cdn.auth0.com",
+    'connect-src': "'self' http://localhost:* getyalla.eu.auth0.com"
+  };
+
   return ENV;
 };

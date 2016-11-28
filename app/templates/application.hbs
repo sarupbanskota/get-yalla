@@ -9,7 +9,12 @@
           {{#link-to 'requests' class='nav-item nav-link'}} Requests {{/link-to}}
           {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
           {{#link-to 'users' class='nav-item nav-link'}} Users {{/link-to}}
-          <a href='#' class='nav-item nav-link float-xs-right'> Logout </a>
+          {{#if session.isAuthenticated}}
+            <a href='#' class='nav-item nav-link float-xs-right'> {{session.data.authenticated.profile.email}} </a>
+            <a href='#' class='nav-item nav-link float-xs-right' {{action 'logout'}}> Logout </a>
+          {{else}}
+            {{#link-to 'index' class='nav-item nav-link float-xs-right'}} Login {{/link-to}}
+          {{/if}}
         </div>
       </nav>
     </div>

@@ -17,4 +17,6 @@ export default function() {
   this.get('/requests');
   this.get('/users');
 
+  this.passthrough('https://getyalla.eu.auth0.com/**');
+
 }
