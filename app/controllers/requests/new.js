@@ -1,13 +1,22 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Controller.extend({
+  from: new Date(),
+  to: new Date(),
+  description: undefined,
+  extraPickadateOptions: {
+    clear: '',
+    format: "d mmm"
+  },
   actions: {
     createNewRequest() {
+      moment(this.get('fromDate')).format('DD-MM-YYYY')
       this.get('store').createRecord('request', {
-        from: '01-01-2016',
-        to: '05-01-2016',
-        status: 'pending',
-        description: 'hello vacations'
+        from: moment(this.get('fromDate')).format('DD-MM-YYYY'),
+        to: moment(this.get('toDate')).format('DD-MM-YYYY'),
+        status: 'Pending',
+        description: this.get('description')
       }).save();
     }
   }
