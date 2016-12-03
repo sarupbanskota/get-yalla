@@ -3,6 +3,7 @@ const { inject: { service } } = Ember;
 
 export default Ember.Component.extend({
   store: service(),
+  possibleStatus: ['Pending', 'Accepted', 'Rejected'],
 
   actions: {
     updateRequestStatus: function(request, newStatus) {

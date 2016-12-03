@@ -38,9 +38,11 @@
               {{request.status}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" {{action 'updateRequestStatus' request 'Pending'}}> Pending </a>
-              <a class="dropdown-item" {{action 'updateRequestStatus' request 'Accepted'}}> Accepted </a>
-              <a class="dropdown-item" {{action 'updateRequestStatus' request 'Rejected'}}> Rejected </a>
+              {{#each possibleStatus as |status|}}
+                {{#unless (eq status request.status)}}
+                  <a class="dropdown-item" {{action 'updateRequestStatus' request status}}> {{status}} </a>
+                {{/unless}}
+              {{/each}}
             </div>
           </div>
         </td>
