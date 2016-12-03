@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('teams');
+  // this.route('teams');
   this.route('requests', function() {
     this.route('new');
   });

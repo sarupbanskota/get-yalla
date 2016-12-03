@@ -7,7 +7,7 @@
             <img src="/logo.svg" height="30" class="d-inline-block align-top" alt="">
           </a>
           {{#link-to 'requests' class='nav-item nav-link'}} Requests {{/link-to}}
-          {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
+          <!-- {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}} -->
           {{#link-to 'users' class='nav-item nav-link'}} Users {{/link-to}}
           {{#if session.isAuthenticated}}
             <a href='#' class='nav-item nav-link float-xs-right' {{action 'logout'}}> Logout </a>
