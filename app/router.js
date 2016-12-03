@@ -11,7 +11,7 @@ Router.map(function() {
   this.route('requests', function() {
     this.route('new');
   });
-  this.route('users');
+  // this.route('users');
   this.route('login');
 });
 
