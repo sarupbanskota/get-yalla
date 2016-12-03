@@ -32,19 +32,23 @@
           </small>
         </td>
         <td>
-          <div class="dropdown">
-            <button class="btn btn-{{request.statusClass}} btn-sm dropdown-toggle" type="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{request.status}}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              {{#each possibleStatus as |status|}}
-                {{#unless (eq status request.status)}}
-                  <a class="dropdown-item" {{action 'updateRequestStatus' request status}}> {{status}} </a>
-                {{/unless}}
-              {{/each}}
+          {{#if isOwner}}
+            <div class="dropdown">
+              <button class="btn btn-{{request.statusClass}} btn-sm dropdown-toggle" type="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{request.status}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {{#each possibleStatus as |status|}}
+                  {{#unless (eq status request.status)}}
+                    <a class="dropdown-item" {{action 'updateRequestStatus' request status}}> {{status}} </a>
+                  {{/unless}}
+                {{/each}}
+              </div>
             </div>
-          </div>
+          {{else}}
+            <span class="tag tag-{{request.statusClass}}"> {{request.status}} </span>
+          {{/if}}
         </td>
       </tr>
     {{/each}}

@@ -1,9 +1,13 @@
 import Ember from 'ember';
-const { inject: { service } } = Ember;
+const { computed, inject: { service } } = Ember;
 
 export default Ember.Component.extend({
   store: service(),
+  session: service(),
   possibleStatus: ['Pending', 'Accepted', 'Rejected'],
+  isOwner: computed('session', function() {
+    return this.get('session.data.authenticated.profile.role') === 'owner';
+  }),
 
   actions: {
     updateRequestStatus: function(request, newStatus) {

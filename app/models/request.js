@@ -13,7 +13,7 @@ export default DS.Model.extend({
   username: DS.attr('string'),
   statusClass: computed('status', function() {
     switch(this.get('status')) {
-      case 'Pending': return 'secondary';
+      case 'Pending': return 'primary';
       case 'Accepted': return 'success';
       case 'Rejected': return 'danger';
     };
