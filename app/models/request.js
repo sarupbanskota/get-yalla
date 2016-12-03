@@ -9,6 +9,7 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   status: DS.attr('string'),
   type: DS.attr('string'),
+  username: DS.attr('string'),
   statusClass: computed('status', function() {
     switch(this.get('status')) {
       case 'Pending': return 'secondary';

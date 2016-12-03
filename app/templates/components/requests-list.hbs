@@ -14,8 +14,8 @@
     {{#each requests as |request|}}
       <tr>
         <th>
-          <img src="{{request.requestedByAvatar}}" alt="{{request.requestedBy}}" height="30px">
-          {{request.requestedBy}}
+          <!-- <img src="{{request.requestedByAvatar}}" alt="{{request.username}}" height="30px"> -->
+          {{request.username}}
         </th>
         <td>
           {{moment-format request.from 'DD MMM'}} → {{moment-format request.to 'DD MMM'}}

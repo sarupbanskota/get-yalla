@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import moment from 'moment';
+const { inject: { service } } = Ember;
 
 export default Ember.Controller.extend({
+  session: service(),
   from: new Date(),
   to: new Date(),
   description: undefined,
@@ -16,7 +18,8 @@ export default Ember.Controller.extend({
         from: moment(this.get('fromDate')).format('DD-MM-YYYY'),
         to: moment(this.get('toDate')).format('DD-MM-YYYY'),
         status: 'Pending',
-        description: this.get('description')
+        description: this.get('description'),
+        username: this.get('session.session.content.authenticated.profile.name')
       }).save();
     }
   }
