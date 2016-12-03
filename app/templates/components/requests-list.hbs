@@ -31,7 +31,20 @@
             {{request.description}}
           </small>
         </td>
-        <td {{action 'updateRequestStatus' request}}>{{request.status}}</td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{request.status}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" {{action 'updateRequestStatus' request 'Pending'}}> Pending </a>
+              <a class="dropdown-item" {{action 'updateRequestStatus' request 'Accepted'}}> Accepted </a>
+              <a class="dropdown-item" {{action 'updateRequestStatus' request 'Rejected'}}> Rejected </a>
+            </div>
+          </div>
+          <!-- {{request.status}} -->
+        </td>
       </tr>
     {{/each}}
   </tbody>
