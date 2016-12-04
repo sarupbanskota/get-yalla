@@ -11,7 +11,7 @@
           <!-- {{#link-to 'users' class='nav-item nav-link'}} Users {{/link-to}} -->
           {{#if session.isAuthenticated}}
             <a href='#' class='nav-item nav-link float-xs-right' {{action 'logout'}}> Logout </a>
-            <a href='#' class='nav-item nav-link float-xs-right'>
+            <a class='nav-item nav-link float-xs-right'>
               <img src="{{session.data.authenticated.profile.picture}}" class="rounded-circle" height="25">
               {{session.data.authenticated.profile.given_name}}
             </a>
