@@ -4,7 +4,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th> User </th>
+      {{#if isOwner}} <th> User </th> {{/if}}
       <th> Dates </th>
       <th> Description </th>
       <th> Status </th>
@@ -13,10 +13,12 @@
   <tbody>
     {{#each requests as |request|}}
       <tr>
-        <th>
-          <!-- <img src="{{request.requestedByAvatar}}" alt="{{request.username}}" height="30px"> -->
-          {{request.username}}
-        </th>
+        {{#if isOwner}}
+          <th>
+            <!-- <img src="{{request.requestedByAvatar}}" alt="{{request.username}}" height="30px"> -->
+            {{request.username}}
+          </th>
+        {{/if}}
         <td>
           {{moment-format request.from 'DD MMM'}} → {{moment-format request.to 'DD MMM'}}
           <small class="text-muted">
