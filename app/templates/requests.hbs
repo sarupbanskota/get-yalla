@@ -2,7 +2,27 @@
 
 <div class='row'>
   <div class='col-sm-8'>
-    {{requests-list requests=model title=requestsListTitle}}
+    You asked for
+    <div class="dropdown inline-dropdown">
+      <button class="btn btn-{{statusClass}} btn-sm dropdown-toggle" type="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{selectedStatus}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {{#each possibleStatus as |status|}}
+          {{#unless (eq status selectedStatus)}}
+            <a class="dropdown-item" {{action 'updateStatusFilter' status}}> {{status}} </a>
+          {{/unless}}
+        {{/each}}
+      </div>
+    </div>
+    requests from
+    <span class='h5 link'>
+      <span class='tag tag-warning'> {{{selectedUsername}}} </span>
+    </span>. {{#link-to 'requests.new'}} New request{{/link-to}}?
+    <br>
+    <br>
+    {{requests-list requests=model}}
   </div>
 
   <div class='col-sm-4'>

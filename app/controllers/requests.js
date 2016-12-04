@@ -6,6 +6,15 @@ export default Ember.Controller.extend({
   status: null,
   username: null,
   session: service(),
+  selectedStatus: computed('status', function() {
+    return !this.get('status') ? 'All' : this.get('status');
+  }),
+  selectedUsername: computed('username', function() {
+    const selectedUserTag = !this.get('username') ? 'everyone' : this.get('username');
+     if (this.get('isOwner')) return `${selectedUserTag}`;
+     else return `you`;
+  }),
+  possibleStatus: ['Pending', 'Accepted', 'Rejected', 'All'],
   statusClass: computed('status', function() {
     switch(this.get('status')) {
       case 'Pending': return 'primary';
@@ -17,17 +26,10 @@ export default Ember.Controller.extend({
   isOwner: computed('session', function() {
     return this.get('session.data.authenticated.profile.role') === 'owner';
   }),
-  requestsListTitle: computed('isOwner', 'status', function() {
-    const status = !this.get('status') ? 'All' : this.get('status');
-    const statusTag = `<span class='tag tag-${this.get('statusClass')}'> ${status} </span>`;
-
-    const username = !this.get('username')
-                       ? 'across the entire organisation'
-                       : `<span class='tag tag-warning'> "${this.get('username')}" </span>`;
-    if (this.get('isOwner')) {
-      return `You asked for <span class='h4'> ${statusTag} </span> requests from <span class='h4'> ${username} </span>`;
-    } else {
-      return `You asked for <span class='h4'> ${statusTag} </span> requests from you`;
+  actions: {
+    updateStatusFilter(status) {
+      if (status === 'All') status = '';
+      this.set('status', status);
     }
-  })
+  }
 });

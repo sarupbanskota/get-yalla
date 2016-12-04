@@ -1,3 +1,11 @@
-a {
+a, .link {
   cursor: pointer;
+}
+
+.font-underline {
+  text-decoration: underline;
+}
+
+.inline-dropdown {
+  display: inline-block;
 }
