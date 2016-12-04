@@ -2,7 +2,7 @@
 
 <div class='row'>
   <div class='col-sm-8'>
-    You asked for
+    Look for
     <div class="dropdown inline-dropdown">
       <button class="btn btn-{{statusClass}} btn-sm dropdown-toggle" type="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -17,9 +17,11 @@
       </div>
     </div>
     requests from
-    <span class='h5 link'>
-      <span class='tag tag-warning'> {{{selectedUsername}}} </span>
-    </span>. {{#link-to 'requests.new'}} New request{{/link-to}}?
+      {{ember-inline-edit value=username
+                          onClose='rollbackSelectedUser'
+                          onSave='updateSelectedUser'
+                          placeholder=displayedSelectedUser}}.
+    {{#link-to 'requests.new'}} New request{{/link-to}}?
     <br>
     <br>
     {{requests-list requests=model}}

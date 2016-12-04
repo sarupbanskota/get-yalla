@@ -5,6 +5,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   queryParams: {
     status: {
       refreshModel: true
+    },
+    username: {
+      refreshModel: true,
+      replace: true
     }
   },
   model(params) {

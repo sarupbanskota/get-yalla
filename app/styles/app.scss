@@ -6,6 +6,23 @@ a, .link {
   text-decoration: underline;
 }
 
-.inline-dropdown {
+.inline-dropdown, .ember-inline-edit {
   display: inline-block;
+}
+
+.ember-inline-edit {
+  background-color: #f0ad4e;
+  border-radius: 0.25rem;
+  outline: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: .15em .25em !important;
+  cursor: pointer !important;
+  button { display: none; }
+}
+
+.ember-inline-edit-input:focus {
+  @extend .ember-inline-edit;
+  width: 150px !important;
 }

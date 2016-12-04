@@ -5,14 +5,18 @@ export default Ember.Controller.extend({
   queryParams: ['status', 'username'],
   status: null,
   username: null,
+  previouslySelectedUsername: null,
   session: service(),
+  displayedSelectedUser: computed('username', function() {
+    return !this.get('username') ? 'everyone' : this.get('username');
+  }),
   selectedStatus: computed('status', function() {
     return !this.get('status') ? 'All' : this.get('status');
   }),
   selectedUsername: computed('username', function() {
     const selectedUserTag = !this.get('username') ? 'everyone' : this.get('username');
-     if (this.get('isOwner')) return `${selectedUserTag}`;
-     else return `you`;
+    if (this.get('isOwner')) return `${selectedUserTag}`;
+    else return `you`;
   }),
   possibleStatus: ['Pending', 'Accepted', 'Rejected', 'All'],
   statusClass: computed('status', function() {
@@ -30,6 +34,18 @@ export default Ember.Controller.extend({
     updateStatusFilter(status) {
       if (status === 'All') status = '';
       this.set('status', status);
+    },
+    rollbackSelectedUser() {
+      this.set('username', this.get('previouslySelectedUsername'));
+      this.toggleProperty('isEditingSelectedUser');
+    },
+    updateSelectedUser(value) {
+      this.set('previouslySelectedUsername', this.get('username'));
+      this.set('username', value);
+      this.toggleProperty('isEditingSelectedUser');
+    },
+    editSelectedUser() {
+      this.toggleProperty('isEditingSelectedUser');
     }
   }
 });
