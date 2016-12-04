@@ -17,10 +17,14 @@
       </div>
     </div>
     requests from
-      {{ember-inline-edit value=username
-                          onClose='rollbackSelectedUser'
-                          onSave='updateSelectedUser'
-                          placeholder=displayedSelectedUser}}.
+      {{#if isOwner}}
+        {{ember-inline-edit value=username
+                            onClose='rollbackSelectedUser'
+                            onSave='updateSelectedUser'
+                            placeholder=displayedSelectedUser}}.
+      {{else}}
+        you.
+      {{/if}}
     {{#link-to 'requests.new'}} New request{{/link-to}}?
     <br>
     <br>
