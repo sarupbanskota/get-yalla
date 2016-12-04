@@ -7,22 +7,31 @@ Submit new leave request
 </div>
 
 <form>
-  <div class="form-group">
-    {{pick-a-date class="form-control"
-                  date=(readonly from)
-                  on-selected=(action (mut from))
-                  placeholder="From"
-                  options=(readonly extraPickadateOptions)}}
+  <div class='row'>
+    <div class='col-xs-6'>
+      <div class="form-group">
+        <label> From </label>
+        {{pick-a-date class="form-control"
+                      date=(readonly from)
+                      on-selected=(action (mut from))
+                      placeholder="From"
+                      options=(readonly extraPickadateOptions)}}
 
+      </div>
+    </div>
+    <div class='col-xs-6'>
+      <label> To </label>
+      <div class="form-group">
+        {{pick-a-date class="form-control"
+                      date=(readonly to)
+                      on-selected=(action (mut to))
+                      placeholder="To"
+                      options=(readonly extraPickadateOptions)}}
+      </div>
+    </div>
   </div>
   <div class="form-group">
-    {{pick-a-date class="form-control"
-                  date=(readonly to)
-                  on-selected=(action (mut to))
-                  placeholder="To"
-                  options=(readonly extraPickadateOptions)}}
-  </div>
-  <div class="form-group">
+    <label> Reason </label>
     {{textarea value=description
                class="form-control" rows="4"
                placeholder="Why're you requesting leave?"}}
