@@ -6,6 +6,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     status: {
       refreshModel: true
     },
+    sortedBy: {
+      refreshModel: true
+    },
     username: {
       refreshModel: true,
       replace: true

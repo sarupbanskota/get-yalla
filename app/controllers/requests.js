@@ -2,11 +2,15 @@ import Ember from 'ember';
 const { computed, inject: { service } } = Ember;
 
 export default Ember.Controller.extend({
-  queryParams: ['status', 'username'],
+  queryParams: ['status', 'username', {
+    sortedBy: 'sorted_by'
+  }],
   status: null,
   username: null,
+  sortedBy: null,
   previouslySelectedUsername: null,
   session: service(),
+  possibleSorts: ['creation date', 'urgency', 'duration'],
   displayedSelectedUser: computed('username', function() {
     return !this.get('username') ? 'everyone' : this.get('username');
   }),
@@ -17,6 +21,9 @@ export default Ember.Controller.extend({
     const selectedUserTag = !this.get('username') ? 'everyone' : this.get('username');
     if (this.get('isOwner')) return `${selectedUserTag}`;
     else return `you`;
+  }),
+  selectedSort: computed('sortedBy', function() {
+    return !this.get('sortedBy') ? 'creation date' : this.get('sortedBy');
   }),
   possibleStatus: ['Pending', 'Accepted', 'Rejected', 'All'],
   statusClass: computed('status', function() {
@@ -35,6 +42,9 @@ export default Ember.Controller.extend({
       if (status === 'All') status = '';
       this.set('status', status);
     },
+    updateSortedBy(sort) {
+      this.set('sortedBy', sort);
+    },
     rollbackSelectedUser() {
       this.set('username', this.get('previouslySelectedUsername'));
       this.toggleProperty('isEditingSelectedUser');
@@ -46,6 +56,6 @@ export default Ember.Controller.extend({
     },
     editSelectedUser() {
       this.toggleProperty('isEditingSelectedUser');
-    }
+    },
   }
 });
