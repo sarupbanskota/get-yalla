@@ -3,7 +3,12 @@
     <tr>
       <th> Username </th>
       {{#each viewingPeriod as |day|}}
-        <th> {{day}} </th>
+        <th>
+          <center>
+            <small class='text-muted'> {{moment-format day 'dd' 'DD-MM-YYYY' }} </small>
+            {{moment-format day 'D' 'DD-MM-YYYY' }}
+          </center>
+        </th>
       {{/each}}
     </tr>
   </thead>
@@ -12,7 +17,9 @@
       <tr>
         <td> {{user.username}} </td>
         {{#each viewingPeriod as |day|}}
-          <td id="{{user.username}}-{{day}}"> <small class='text-muted'> # </small> </td>
+          <td id="{{user.username}}-{{day}}">
+            <small class='text-muted'>  </small>
+          </td>
         {{/each}}
       </tr>
     {{/each}}
