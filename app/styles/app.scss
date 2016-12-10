@@ -26,3 +26,11 @@ a, .link {
   @extend .ember-inline-edit;
   width: 150px !important;
 }
+
+.onVacation {
+  background-color: limegreen;
+}
+
+.startVacation {
+  background-color: deeppink;
+}

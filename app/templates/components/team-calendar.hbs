@@ -2,8 +2,8 @@
   <thead>
     <tr>
       <th> Username </th>
-      {{#each calendar}}
-        <th> {{this}} </th>
+      {{#each viewingPeriod as |day|}}
+        <th> {{day}} </th>
       {{/each}}
     </tr>
   </thead>
@@ -11,6 +11,9 @@
     {{#each data as |user|}}
       <tr>
         <td> {{user.username}} </td>
+        {{#each viewingPeriod as |day|}}
+          <td id="{{user.username}}-{{day}}"> <small class='text-muted'> # </small> </td>
+        {{/each}}
       </tr>
     {{/each}}
   </tbody>
@@ -22,4 +25,4 @@
 
 <hr>
 
-<div {{action 'displayThings'}}> Show </div>
+<div {{action 'makeCalendar'}}> Show </div>
