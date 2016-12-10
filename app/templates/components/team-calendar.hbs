@@ -1,0 +1,25 @@
+<table class='table table-bordered'>
+  <thead>
+    <tr>
+      <th> Username </th>
+      {{#each calendar}}
+        <th> {{this}} </th>
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data as |user|}}
+      <tr>
+        <td> {{user.username}} </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<hr>
+
+{{moment-calendar date}}
+
+<hr>
+
+<div {{action 'displayThings'}}> Show </div>
