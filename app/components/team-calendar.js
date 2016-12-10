@@ -79,48 +79,6 @@ export default Ember.Component.extend({
           }
         });
       });
-    },
-    displayThings() {
-
-      // while (day <= endOfWeek) {
-      //   days.push(day.format('dd D MMM'));
-      //   day = day.clone().add(1, 'd');
-      // }
-      //
-      // this.set('daysOfSelectedWeek', days);
-      //
-      // console.log(days);
-
-      let startOfPeriod = moment().startOf('week');
-      let endOfPeriod = moment().endOf('week');
-
-      let includedDays = {};
-      let day = startOfPeriod;
-
-      let currentDateObj = {};
-
-      while (day <= endOfPeriod) {
-        currentDateObj.dayOfWeek = day.format('dd');
-        includedDays[day.format('DD-MM-YYYY')] = currentDateObj;
-        day = day.clone().add(1, 'd');
-        currentDateObj = {};
-      }
-
-
-      let soonerDate = endOfPeriod;
-      let fromMoment, toMoment;
-
-      this.get('data').forEach((user) => {
-        user.requests.forEach((request) => {
-          fromMoment = moment(request.from, 'DD-MM-YYYY');
-          toMoment = moment(request.to, 'DD-MM-YYYY');
-
-        });
-      });
-
-
-      this.set('calendar', includedDays);
-      console.log(includedDays);
     }
   }
 });
