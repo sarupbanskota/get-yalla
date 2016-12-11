@@ -28,8 +28,9 @@
 
 <hr>
 
+<a {{action 'changePeriod' 'week'  ''}}> Week </a>
+<a {{action 'changePeriod' 'month' ''}}> Month </a>
 
-<div {{action 'makeCalendar'}}> Show </div>
 
-<a {{action 'changePeriod' 'prev'}}> prev </a>
-<a {{action 'changePeriod' 'next'}}> next </a>
+<a {{action 'changePeriod' '' 'prev'}}> prev </a>
+<a {{action 'changePeriod' '' 'next'}}> next </a>

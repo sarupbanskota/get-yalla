@@ -7,6 +7,7 @@ export default Component.extend({
   viewingPeriod: null,
   startOfPeriod: null,
   endOfPeriod: null,
+  unit: 'week',
   data: [{
     username: 'Sarup',
     requests: [{
@@ -36,8 +37,8 @@ export default Component.extend({
   init() {
     this._super();
     if (!this.get('startOfPeriod') && !this.get('endOfPeriod')) {
-      this.set('startOfPeriod', moment().startOf('week'));
-      this.set('endOfPeriod', moment().endOf('week'));
+      this.set('startOfPeriod', moment().startOf(this.get('unit')));
+      this.set('endOfPeriod', moment().endOf(this.get('unit')));
     }
     let day = this.get('startOfPeriod');
     let daysInPeriod = [];
@@ -53,18 +54,25 @@ export default Component.extend({
     this.fillCalendar();
   },
   actions: {
-    changePeriod(direction) {
-      const change = direction === 'next' ? 7 : -7;
-      this.set('startOfPeriod', this.get('startOfPeriod').add(change, 'days'));
-      this.set('endOfPeriod',   this.get('endOfPeriod'  ).add(change, 'days'));
+    changePeriod(unit, direction) {
+      if (unit) {
+        this.set('unit', unit);
+        this.set('startOfPeriod', moment().startOf(unit));
+        this.set('endOfPeriod',   moment().endOf(unit));
+      } else {
+        direction = (direction === 'next') ? 1 : -1;
+        this.set('startOfPeriod', this.get('startOfPeriod').add(direction, this.get('unit')));
+        this.set('endOfPeriod',   this.get('endOfPeriod'  ).add(direction, this.get('unit')));
+      }
       this.updateViewingPeriod();
     }
   },
   updateViewingPeriod() {
     if (!(this.get('startOfPeriod') && this.get('endOfPeriod'))) {
-      this.set('startOfPeriod', moment().startOf('week'));
-      this.set('endOfPeriod',   moment().endOf('week'));
+      this.set('startOfPeriod', moment().startOf(this.get('unit')));
+      this.set('endOfPeriod',   moment().endOf(this.get('unit')));
     }
+    
     let day = this.get('startOfPeriod');
     let daysInPeriod = [];
 
