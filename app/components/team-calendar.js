@@ -40,6 +40,7 @@ export default Component.extend({
   },
   didRender() {
     this.fillCalendar();
+    $('[data-toggle="tooltip"]').tooltip();
   },
   actions: {
     changePeriod(unit, direction) {
@@ -84,8 +85,11 @@ export default Component.extend({
           const duration = Math.abs(fromMoment.diff(soonerDate, 'days')) + 1;
 
           const userFromCell = $(`#${user.username}-${fromMoment.format('DD-MM-YYYY')}`);
-          userFromCell.attr('colspan', duration);
           userFromCell.addClass('onVacation');
+          userFromCell.attr('colspan', duration);
+          userFromCell.attr('data-toggle', 'tooltip');
+          userFromCell.attr('data-placement', 'bottom');
+          userFromCell.attr('title', request.description);
           userFromCell.html(request.description);
 
           let day = fromMoment.add(1, 'd');
