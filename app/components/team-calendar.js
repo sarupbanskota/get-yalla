@@ -36,19 +36,7 @@ export default Component.extend({
   }],
   init() {
     this._super();
-    if (!this.get('startOfPeriod') && !this.get('endOfPeriod')) {
-      this.set('startOfPeriod', moment().startOf(this.get('unit')));
-      this.set('endOfPeriod', moment().endOf(this.get('unit')));
-    }
-    let day = this.get('startOfPeriod');
-    let daysInPeriod = [];
-
-    while (day <= this.get('endOfPeriod')) {
-      daysInPeriod.push(day.format('DD-MM-YYYY'));
-      day = day.clone().add(1, 'd');
-    }
-
-    this.set('viewingPeriod', daysInPeriod);
+    this.updateViewingPeriod();
   },
   didRender() {
     this.fillCalendar();
@@ -72,7 +60,7 @@ export default Component.extend({
       this.set('startOfPeriod', moment().startOf(this.get('unit')));
       this.set('endOfPeriod',   moment().endOf(this.get('unit')));
     }
-    
+
     let day = this.get('startOfPeriod');
     let daysInPeriod = [];
 

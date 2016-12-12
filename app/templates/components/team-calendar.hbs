@@ -28,9 +28,14 @@
 
 <hr>
 
-<a {{action 'changePeriod' 'week'  ''}}> Week </a>
-<a {{action 'changePeriod' 'month' ''}}> Month </a>
-
-
 <a {{action 'changePeriod' '' 'prev'}}> prev </a>
 <a {{action 'changePeriod' '' 'next'}}> next </a>
+
+<br>
+<br>
+
+{{#if (eq unit 'month')}}
+  <a {{action 'changePeriod' 'week'  ''}}> Week </a>
+{{else}}
+  <a {{action 'changePeriod' 'month' ''}}> Month </a>
+{{/if}}
