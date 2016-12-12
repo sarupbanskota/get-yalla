@@ -33,10 +33,17 @@ a, .link {
 td {
   max-width: 50px;
   box-sizing: border-box !important;
-  border: none !important;
   display: table-cell;
   white-space: nowrap;
   overflow: hidden;
+}
+
+td, th {
+  border: none !important;
+}
+
+td.Sunday, th.Sunday {
+  border-right: solid 0.1em black !important;  
 }
 
 th.Sunday, th.Saturday, td.Sunday, td.Saturday {

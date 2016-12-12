@@ -2,11 +2,28 @@
   <table class='table table-bordered'>
     <thead>
       <tr>
+        <th></th>
+        {{#each viewingPeriod as |day|}}
+          {{#if (eq 'Monday' (moment-format day 'dddd'))}}
+            <th class="{{moment-format day 'dddd'}}">
+              <small>
+                {{moment-format day 'MMM'}}
+                W{{moment-format day 'w'}}
+              </small>
+            </th>
+          {{else}}
+            <th></th>
+          {{/if}}
+        {{/each}}
+      </tr>
+      <tr>
         <th> Username </th>
         {{#each viewingPeriod as |day|}}
           <th class="{{moment-format day 'dddd'}}">
             <center>
-              <small class='text-muted'> {{moment-format day 'dd'}} </small>
+              <small>
+                {{moment-format day 'dd'}}
+              </small>
               {{moment-format day 'D'}}
             </center>
           </th>
