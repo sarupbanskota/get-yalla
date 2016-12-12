@@ -1,3 +1,6 @@
+$light-gray: #f1f1f1;
+$yalla-secondary: #FBECCF;
+
 a, .link {
   cursor: pointer;
 }
@@ -27,6 +30,24 @@ a, .link {
   width: 150px !important;
 }
 
-.onVacation {
-  background-color: limegreen;
+td {
+  max-width: 50px;
+  box-sizing: border-box !important;
+  border: none !important;
+  display: table-cell;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+th.Sunday, th.Saturday, td.Sunday, td.Saturday {
+  background-color: $light-gray;
+}
+
+td.Sunday, td.Saturday {
+  opacity: 0.5;
+}
+
+td.onVacation {
+  background-color: $yalla-secondary;
+  border: solid 2px white !important;
 }
