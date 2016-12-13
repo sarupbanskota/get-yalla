@@ -5,7 +5,7 @@
         <th></th>
         {{#each viewingPeriod as |day|}}
           {{#if (eq 'Monday' (moment-format day 'dddd' 'DD-MM-YYYY'))}}
-            <th class="{{moment-format day 'dddd'}}">
+            <th>
               <small>
                 {{moment-format day 'MMM' 'DD-MM-YYYY'}}
                 W{{moment-format day 'w' 'DD-MM-YYYY'}}
