@@ -1,5 +1,6 @@
 $light-gray: #f1f1f1;
 $yalla-secondary: #FBECCF;
+$yalla-primary: #112378;
 
 a, .link {
   cursor: pointer;
@@ -43,11 +44,11 @@ td, th {
 }
 
 td.Sunday, th.Sunday {
-  border-right: solid 0.1em black !important;  
+  border-right: solid 0.1em black !important;
 }
 
 th.Sunday, th.Saturday, td.Sunday, td.Saturday {
-  background-color: $light-gray;
+  background-color: $yalla-secondary;
 }
 
 td.Sunday, td.Saturday {
@@ -55,7 +56,8 @@ td.Sunday, td.Saturday {
 }
 
 td.onVacation {
-  background-color: $yalla-secondary;
+  background-color: $yalla-primary;
+  color: $yalla-secondary;
   border: solid 2px white !important;
   cursor: pointer;
 }
