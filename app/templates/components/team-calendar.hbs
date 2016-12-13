@@ -4,11 +4,11 @@
       <tr>
         <th></th>
         {{#each viewingPeriod as |day|}}
-          {{#if (eq 'Monday' (moment-format day 'dddd'))}}
+          {{#if (eq 'Monday' (moment-format day 'dddd' 'DD-MM-YYYY'))}}
             <th class="{{moment-format day 'dddd'}}">
               <small>
-                {{moment-format day 'MMM'}}
-                W{{moment-format day 'w'}}
+                {{moment-format day 'MMM' 'DD-MM-YYYY'}}
+                W{{moment-format day 'w' 'DD-MM-YYYY'}}
               </small>
             </th>
           {{else}}
@@ -19,12 +19,12 @@
       <tr>
         <th> Username </th>
         {{#each viewingPeriod as |day|}}
-          <th class="{{moment-format day 'dddd'}}">
+          <th class="{{moment-format day 'dddd' 'DD-MM-YYYY'}}">
             <center>
               <small>
-                {{moment-format day 'dd'}}
+                {{moment-format day 'dd' 'DD-MM-YYYY'}}
               </small>
-              {{moment-format day 'D'}}
+              {{moment-format day 'D' 'DD-MM-YYYY'}}
             </center>
           </th>
         {{/each}}
@@ -35,7 +35,7 @@
         <tr>
           <td> {{user.username}} </td>
           {{#each viewingPeriod as |day|}}
-            <td id="{{user.username}}-{{moment-format day 'DD-MM-YYYY'}}" class="{{moment-format day 'dddd'}}">
+            <td id="{{user.username}}-{{day}}" class="{{moment-format day 'dddd' 'DD-MM-YYYY'}}">
               <small class='text-muted'></small>
             </td>
           {{/each}}

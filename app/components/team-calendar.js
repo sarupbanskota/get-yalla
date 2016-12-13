@@ -66,7 +66,7 @@ export default Component.extend({
     let daysInPeriod = [];
 
     while (day <= this.get('endOfPeriod')) {
-      daysInPeriod.push(day);
+      daysInPeriod.push(day.format('DD-MM-YYYY'));
       day = day.clone().add(1, 'd');
     }
 
