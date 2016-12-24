@@ -5,13 +5,13 @@ export default Ember.Controller.extend({
   queryParams: ['status', 'username', {
     sortedBy: 'sorted_by'
   }],
-  status: null,
-  username: null,
-  sortedBy: null,
-  previouslySelectedUsername: null,
-  session: service(),
-  possibleSorts: ['creation date', 'urgency', 'duration'],
-  displayedSelectedUser: computed('username', function() {
+  status                     : null,
+  username                   : null,
+  sortedBy                   : null,
+  previouslySelectedUsername : null,
+  session                    : service(),
+  possibleSorts              : ['creation date', 'urgency', 'duration'],
+  displayedSelectedUser      : computed('username', function() {
     return !this.get('username') ? 'everyone' : this.get('username');
   }),
   selectedStatus: computed('status', function() {
@@ -19,27 +19,32 @@ export default Ember.Controller.extend({
   }),
   selectedUsername: computed('username', function() {
     const selectedUserTag = !this.get('username') ? 'everyone' : this.get('username');
-    if (this.get('isOwner')) return `${selectedUserTag}`;
-    else return `you`;
+    if (this.get('isOwner')) {
+      return `${selectedUserTag}`;
+    }    else {
+      return 'you';
+    }
   }),
   selectedSort: computed('sortedBy', function() {
     return !this.get('sortedBy') ? 'creation date' : this.get('sortedBy');
   }),
-  possibleStatus: ['Pending', 'Accepted', 'Rejected', 'All'],
-  statusClass: computed('status', function() {
-    switch(this.get('status')) {
+  possibleStatus : ['Pending', 'Accepted', 'Rejected', 'All'],
+  statusClass    : computed('status', function() {
+    switch (this.get('status')) {
       case 'Pending': return 'primary';
       case 'Accepted': return 'success';
       case 'Rejected': return 'danger';
       default: return 'default';
-    };
+    }
   }),
   isOwner: computed('session', function() {
     return this.get('session.data.authenticated.profile.role') === 'owner';
   }),
   actions: {
     updateStatusFilter(status) {
-      if (status === 'All') status = '';
+      if (status === 'All') {
+        status = '';
+      }
       this.set('status', status);
     },
     updateSortedBy(sort) {
@@ -56,6 +61,6 @@ export default Ember.Controller.extend({
     },
     editSelectedUser() {
       this.toggleProperty('isEditingSelectedUser');
-    },
+    }
   }
 });

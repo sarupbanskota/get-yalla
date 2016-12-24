@@ -4,34 +4,34 @@ import Ember from 'ember';
 const { Component, $ } = Ember;
 
 export default Component.extend({
-  viewingPeriod: null,
-  startOfPeriod: null,
-  endOfPeriod: null,
-  unit: 'week',
-  data: [{
-    username: 'Sarup',
-    requests: [{
-      from: '5-12-2016',
-      to: '14-12-2016',
-      description: 'Skiing holiday'
+  viewingPeriod : null,
+  startOfPeriod : null,
+  endOfPeriod   : null,
+  unit          : 'week',
+  data          : [{
+    username : 'Sarup',
+    requests : [{
+      from        : '5-12-2016',
+      to          : '14-12-2016',
+      description : 'Skiing holiday'
     }]
   }, {
-    username: 'Martin',
-    requests: [{
-      from: '7-12-2016',
-      to: '8-12-2016',
-      description: 'Getting hitched'
+    username : 'Martin',
+    requests : [{
+      from        : '7-12-2016',
+      to          : '8-12-2016',
+      description : 'Getting hitched'
     }, {
-      from: '9-12-2016',
-      to: '12-12-2016',
-      description: 'Conference'
+      from        : '9-12-2016',
+      to          : '12-12-2016',
+      description : 'Conference'
     }]
   }, {
-    username: 'Sarit',
-    requests: [{
-      from: '6-12-2016',
-      to: '9-12-2016',
-      description: 'Take Shakira for a walk'
+    username : 'Sarit',
+    requests : [{
+      from        : '6-12-2016',
+      to          : '9-12-2016',
+      description : 'Take Shakira for a walk'
     }]
   }],
   init() {
@@ -51,7 +51,7 @@ export default Component.extend({
       } else {
         direction = (direction === 'next') ? 1 : -1;
         this.set('startOfPeriod', this.get('startOfPeriod').add(direction, this.get('unit')));
-        this.set('endOfPeriod',   this.get('endOfPeriod'  ).add(direction, this.get('unit')));
+        this.set('endOfPeriod',   this.get('endOfPeriod').add(direction, this.get('unit')));
       }
       this.updateViewingPeriod();
     }
@@ -75,8 +75,8 @@ export default Component.extend({
   fillCalendar() {
     const startOfPeriod = this.get('startOfPeriod');
     const endOfPeriod = this.get('endOfPeriod');
-    this.get('data').forEach(user => {
-      user.requests.forEach(request => {
+    this.get('data').forEach((user) => {
+      user.requests.forEach((request) => {
         const fromMoment = moment(request.from, 'DD-MM-YYYY');
         const toMoment = moment(request.to, 'DD-MM-YYYY');
 

@@ -4,12 +4,12 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 export default Ember.Route.extend(ApplicationRouteMixin, {
 
   actions: {
-    login () {
-      var lockOptions = {authParams:{scope: 'openid'}};
+    login() {
+      let lockOptions = { authParams: { scope: 'openid' } };
       this.get('session').authenticate('simple-auth-authenticator:lock', lockOptions);
     },
 
-    logout () {
+    logout() {
       this.get('session').invalidate();
     }
   }
