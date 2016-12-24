@@ -1,7 +1,9 @@
 import Ember from 'ember';
 const { inject: { service }, computed } = Ember;
 
-export default Ember.Controller.extend({
+const { Controller } = Ember;
+
+export default Controller.extend({
   session     : service(),
   from        : new Date(),
   to          : new Date(),

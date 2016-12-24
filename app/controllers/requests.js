@@ -1,7 +1,9 @@
 import Ember from 'ember';
 const { computed, inject: { service } } = Ember;
 
-export default Ember.Controller.extend({
+const { Controller } = Ember;
+
+export default Controller.extend({
   queryParams: ['status', 'username', {
     sortedBy: 'sorted_by'
   }],
@@ -18,10 +20,10 @@ export default Ember.Controller.extend({
     return !this.get('status') ? 'All' : this.get('status');
   }),
   selectedUsername: computed('username', function() {
-    const selectedUserTag = !this.get('username') ? 'everyone' : this.get('username');
+    let selectedUserTag = !this.get('username') ? 'everyone' : this.get('username');
     if (this.get('isOwner')) {
       return `${selectedUserTag}`;
-    }    else {
+    } else {
       return 'you';
     }
   }),
