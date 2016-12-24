@@ -30,24 +30,26 @@
         {{ember-inline-edit value=username
                             onClose='rollbackSelectedUser'
                             onSave='updateSelectedUser'
-                            placeholder=displayedSelectedUser}},
+                            placeholder=displayedSelectedUser}}
       {{else}}
-        you,
+        you
       {{/if}}
-      sorted by
-      <div class="dropdown inline-dropdown">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{selectedSort}}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {{#each possibleSorts as |sort|}}
-            {{#unless (eq selectedSort sort)}}
-              <a class="dropdown-item" {{action 'updateSortedBy' sort}}> {{sort}} </a>
-            {{/unless}}
-          {{/each}}
+      {{#if features.requestSorting}}
+        , sorted by
+        <div class="dropdown inline-dropdown">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{selectedSort}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {{#each possibleSorts as |sort|}}
+              {{#unless (eq selectedSort sort)}}
+                <a class="dropdown-item" {{action 'updateSortedBy' sort}}> {{sort}} </a>
+              {{/unless}}
+            {{/each}}
+          </div>
         </div>
-      </div>
+      {{/if}}
     <br>
     <br>
     {{requests-list requests=model}}

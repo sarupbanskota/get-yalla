@@ -4,7 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     featureFlags: {
       'calendar': false,
-      'teams': false
+      'teams': false,
+      'requestSorting': false
     },
     modulePrefix: 'get-yalla',
     environment: environment,
