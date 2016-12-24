@@ -2,15 +2,17 @@ import DS from 'ember-data';
 import moment from 'moment';
 import computed from 'ember-computed';
 
-export default DS.Model.extend({
-  requestedBy       : DS.attr('string'),
-  requestedByAvatar : DS.attr('string'),
-  from              : DS.attr('string'),
-  to                : DS.attr('string'),
-  description       : DS.attr('string'),
-  status            : DS.attr('string'),
-  type              : DS.attr('string'),
-  username          : DS.attr('string'),
+const { Model, attr } = DS;
+
+export default Model.extend({
+  requestedBy       : attr('string'),
+  requestedByAvatar : attr('string'),
+  from              : attr('string'),
+  to                : attr('string'),
+  description       : attr('string'),
+  status            : attr('string'),
+  type              : attr('string'),
+  username          : attr('string'),
   statusClass       : computed('status', function() {
     switch (this.get('status')) {
       case 'Pending': return 'primary';
@@ -19,9 +21,9 @@ export default DS.Model.extend({
     }
   }),
   duration: computed('from', 'to', function() {
-    const fromMoment = moment(this.get('from'));
-    const toMoment = moment(this.get('to'));
-    const difference = Math.abs(fromMoment.diff(toMoment, 'days'));
+    let fromMoment = moment(this.get('from'));
+    let toMoment = moment(this.get('to'));
+    let difference = Math.abs(fromMoment.diff(toMoment, 'days'));
     return difference === 0 ?  '1 day' : `${difference + 1} days`;
   })
 });

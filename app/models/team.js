@@ -1,7 +1,9 @@
 import DS from 'ember-data';
 
-export default DS.Model.extend({
-  name        : DS.attr('string'),
-  count       : DS.attr('number'),
-  description : DS.attr('string')
+const { Model, attr } = DS;
+
+export default Model.extend({
+  name        : attr('string'),
+  count       : attr('number'),
+  description : attr('string')
 });
