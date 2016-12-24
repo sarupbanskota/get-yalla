@@ -12,6 +12,7 @@ module.exports = {
     'browser': true
   },
   rules: {
+    'no-console': 'off',
     'camelcase': 'off',
     'key-spacing': [
       'error', {

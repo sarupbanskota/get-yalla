@@ -73,18 +73,18 @@ export default Component.extend({
     this.set('viewingPeriod', daysInPeriod);
   },
   fillCalendar() {
-    const startOfPeriod = this.get('startOfPeriod');
-    const endOfPeriod = this.get('endOfPeriod');
+    let startOfPeriod = this.get('startOfPeriod');
+    let endOfPeriod = this.get('endOfPeriod');
     this.get('data').forEach((user) => {
       user.requests.forEach((request) => {
-        const fromMoment = moment(request.from, 'DD-MM-YYYY');
-        const toMoment = moment(request.to, 'DD-MM-YYYY');
+        let fromMoment = moment(request.from, 'DD-MM-YYYY');
+        let toMoment = moment(request.to, 'DD-MM-YYYY');
 
         if (fromMoment.isBetween(startOfPeriod, endOfPeriod)) {
-          const soonerDate = toMoment.isSameOrBefore(endOfPeriod) ? toMoment : endOfPeriod;
-          const duration = Math.abs(fromMoment.diff(soonerDate, 'days')) + 1;
+          let soonerDate = toMoment.isSameOrBefore(endOfPeriod) ? toMoment : endOfPeriod;
+          let duration = Math.abs(fromMoment.diff(soonerDate, 'days')) + 1;
 
-          const userFromCell = $(`#${user.username}-${fromMoment.format('DD-MM-YYYY')}`);
+          let userFromCell = $(`#${user.username}-${fromMoment.format('DD-MM-YYYY')}`);
           userFromCell.addClass('onVacation');
           userFromCell.attr('colspan', duration);
           userFromCell.attr('data-toggle', 'tooltip');

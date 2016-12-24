@@ -1,7 +1,9 @@
 import Ember from 'ember';
 const { computed, inject: { service } } = Ember;
 
-export default Ember.Component.extend({
+const { Component } = Ember;
+
+export default Component.extend({
   store          : service(),
   session        : service(),
   possibleStatus : ['Pending', 'Accepted', 'Rejected'],
