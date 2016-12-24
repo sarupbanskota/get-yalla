@@ -2,6 +2,10 @@
 
 module.exports = function(environment) {
   var ENV = {
+    featureFlags: {
+      'calendar': false,
+      'teams': false
+    },
     modulePrefix: 'get-yalla',
     environment: environment,
     rootURL: '/',
@@ -29,6 +33,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.LOG_FEATURE_FLAG_MISS = true;
   }
 
   if (environment === 'test') {
