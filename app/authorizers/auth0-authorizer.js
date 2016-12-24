@@ -4,8 +4,8 @@ const { isEmpty } = Ember;
 
 export default BaseAuthorizer.extend({
   authorize(sessionData, block) {
-    const tokenAttributeName = 'jwt';
-    const userToken = sessionData[tokenAttributeName];
+    let tokenAttributeName = 'jwt';
+    let userToken = sessionData[tokenAttributeName];
     if (!isEmpty(userToken)) {
       block('Authorization', `Bearer ${userToken}`);
     }
