@@ -31,33 +31,35 @@ a, .link {
   width: 150px !important;
 }
 
-td {
-  max-width: 50px;
-  box-sizing: border-box !important;
-  display: table-cell;
-  white-space: nowrap;
-  overflow: hidden;
-}
+.calendar {
+  td {
+    max-width: 50px;
+    box-sizing: border-box !important;
+    display: table-cell;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
-td, th {
-  border: none !important;
-}
+  td, th {
+    border: none !important;
+  }
 
-td.Sunday, th.Sunday {
-  border-right: solid 0.1em black !important;
-}
+  td.Sunday, th.Sunday {
+    border-right: solid 0.1em black !important;
+  }
 
-th.Sunday, th.Saturday, td.Sunday, td.Saturday {
-  background-color: $yalla-secondary;
-}
+  th.Sunday, th.Saturday, td.Sunday, td.Saturday {
+    background-color: $yalla-secondary;
+  }
 
-td.Sunday, td.Saturday {
-  opacity: 0.5;
-}
+  td.Sunday, td.Saturday {
+    opacity: 0.5;
+  }
 
-td.onVacation {
-  background-color: $yalla-primary;
-  color: $yalla-secondary;
-  border: solid 2px white !important;
-  cursor: pointer;
+  td.onVacation {
+    background-color: $yalla-primary;
+    color: $yalla-secondary;
+    border: solid 2px white !important;
+    cursor: pointer;
+  }  
 }

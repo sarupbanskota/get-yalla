@@ -1,9 +1,9 @@
 <table class="table">
   <thead>
     <tr>
-      {{#if isOwner}} <th> User </th> {{/if}}
-      <th> Dates </th>
-      <th> Description </th>
+      {{#if isOwner}} <th class='regular-column'> User </th> {{/if}}
+      <th class='regular-column'> Dates </th>
+      <th class='big-mac-column'> Description </th>
       <th>
         Status
       </th>
@@ -13,19 +13,19 @@
     {{#each requests as |request|}}
       <tr>
         {{#if isOwner}}
-          <th>
+          <th class='regular-column'>
             <!-- <img src="{{request.requestedByAvatar}}" alt="{{request.username}}" height="30px"> -->
             {{request.username}}
           </th>
         {{/if}}
-        <td>
+        <td class='regular-column'>
           {{moment-format request.from 'DD MMM'}} → {{moment-format request.to 'DD MMM'}}
           <small class="text-muted">
             <br>
             {{request.duration}}
           </small>
         </td>
-        <td>
+        <td class='big-mac-column'>
           <!-- <span class="tag tag-pill tag-primary"> {{request.type}} </span> -->
           <small class="text-muted">
             <!-- <br> -->
