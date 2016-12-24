@@ -1,4 +1,13 @@
-<h3> Requests </h3>
+<div class='row'>
+  <div class='col-sm-8'>
+    <h3> Requests </h3>
+  </div>
+  <div class='col-sm-4'>
+    {{#link-to 'requests.new'}}
+      <h5> New request </h5>
+    {{/link-to}}
+  </div>
+</div>
 
 <div class='row'>
   <div class='col-sm-8'>
@@ -38,9 +47,7 @@
             {{/unless}}
           {{/each}}
         </div>
-      </div>.
-
-    {{#link-to 'requests.new'}} New request{{/link-to}}?
+      </div>
     <br>
     <br>
     {{requests-list requests=model}}
