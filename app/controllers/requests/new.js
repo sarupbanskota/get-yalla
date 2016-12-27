@@ -22,10 +22,14 @@ export default Controller.extend({
         status      : 'Pending',
         description : this.get('description'),
         username    : this.get('session.session.content.authenticated.profile.name')
-      }).save();
-      this.set('from', new Date());
-      this.set('to', new Date());
-      this.set('description', undefined);
+      }).save().then(() => {
+        this.set('from', new Date());
+        this.set('to', new Date());
+        this.set('description', undefined);
+        window.location.reload(true);
+      }, () => {
+        alert("didn't save :(")
+      });
     }
   },
 
