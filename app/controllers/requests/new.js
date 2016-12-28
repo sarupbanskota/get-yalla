@@ -28,7 +28,7 @@ export default Controller.extend({
         this.set('description', undefined);
         window.location.reload(true);
       }, () => {
-        alert("didn't save :(")
+        alert("didn't save :(");
       });
     }
   },

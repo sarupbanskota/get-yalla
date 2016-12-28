@@ -9,8 +9,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   },
   model() {
-    const currentUserID = this.get('session.session.content.authenticated.profile.user_id');
-    this.store.query('user', { auth_id: currentUserID }).get('firstObject');
 
   }
 });
