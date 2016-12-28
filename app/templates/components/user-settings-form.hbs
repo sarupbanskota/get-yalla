@@ -1,0 +1,35 @@
+<form>
+  {{#if countries}}
+    <div class="form-group">
+      <label> Primary Country </label>
+      <select class="form-control">
+        {{#each countries as |country|}}
+          <option> {{country}} </option>
+        {{/each}}
+      </select>
+    </div>
+  {{else}}
+    <span> Loading countries... </span>
+    <br>
+    <br>
+  {{/if}}
+
+  {{#if timezones}}
+    <div class="form-group">
+      <label> Current Timezone </label>
+      <select class="form-control">
+        {{#each timezones as |timezone|}}
+          <option> {{timezone}} </option>
+        {{/each}}
+      </select>
+    </div>
+  {{else}}
+    <span> Loading timezones... </span>
+    <br>
+    <br>
+  {{/if}}
+
+  <button type="submit" class="btn btn-primary">
+    All set, get me started!
+  </button>
+</form>
