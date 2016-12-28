@@ -15,6 +15,7 @@ Router.map(function() {
   });
   // this.route('users');
   this.route('calendar');
+  this.route('welcome');
 });
 
 export default Router;
