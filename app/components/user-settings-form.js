@@ -8,7 +8,9 @@ export default Component.extend({
 
   didInsertElement() {
     this.get('countriesService').all().then((countries) => {
-      this.set('countries', countries);
+      this.set('countries', countries.map((country) => {
+        return { name: country[0], code: country[1] };
+      }));
     });
     this.get('timezonesService').all().then((timezones) => {
       this.set('timezones', timezones);

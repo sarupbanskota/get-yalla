@@ -1,11 +1,25 @@
 import Ember from 'ember';
 
-const { Service, RSVP: { Promise: RSVPPromise } } = Ember;
+const {
+  getOwner, $: { ajax },
+  Service, inject: { service },
+  RSVP: { Promise: RSVPPromise }
+} = Ember;
 
 export default Service.extend({
+  store : service(),
   all() {
+    const adapter = getOwner(this).lookup('adapter:application');
+    const options = adapter.ajaxOptions();
+    options.url = `${adapter.urlPrefix()}/countries`;
+    options.type = 'GET';
+
     return new RSVPPromise((resolve) => {
-      resolve(['Singapore', 'Germany']);
+      ajax(options).then((data) => {
+        resolve(data);
+      }, jqXHR => {
+        reject(null);
+      });
     });
-  }
+  },
 });

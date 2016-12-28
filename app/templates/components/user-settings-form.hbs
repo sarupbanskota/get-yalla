@@ -4,7 +4,8 @@
       <label> Primary Country </label>
       <select class="form-control">
         {{#each countries as |country|}}
-          <option> {{country}} </option>
+          <option value={{country.code}}> {{country.name}} ({{country.code}}) </option>
+
         {{/each}}
       </select>
     </div>
