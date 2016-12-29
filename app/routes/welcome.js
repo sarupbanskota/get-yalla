@@ -4,11 +4,4 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 const { Route, inject: { service } } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, {
-  session: service(),
-  beforeModel() {
-
-  },
-  model() {
-
-  }
 });
