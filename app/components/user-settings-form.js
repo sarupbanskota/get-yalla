@@ -13,7 +13,9 @@ export default Component.extend({
       }));
     });
     this.get('timezonesService').all().then((timezones) => {
-      this.set('timezones', timezones);
+      this.set('timezones', timezones.map((timezone) => {
+        return { name: timezone[0], code: timezone[1]}
+      }));
     });
   }
 });
