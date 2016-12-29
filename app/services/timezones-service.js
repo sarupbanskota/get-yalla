@@ -7,19 +7,19 @@ const {
 } = Ember;
 
 export default Service.extend({
-  store : service(),
+  store: service(),
   all() {
-    const adapter = getOwner(this).lookup('adapter:application');
-    const options = adapter.ajaxOptions();
+    let adapter = getOwner(this).lookup('adapter:application');
+    let options = adapter.ajaxOptions();
     options.url = `${adapter.urlPrefix()}/timezones`;
     options.type = 'GET';
 
-    return new RSVPPromise((resolve) => {
+    return new RSVPPromise((resolve, reject) => {
       ajax(options).then((data) => {
         resolve(data);
-      }, jqXHR => {
+      }, () => {
         reject(null);
       });
     });
-  },
+  }
 });

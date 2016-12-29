@@ -7,7 +7,7 @@ const {
 } = Ember;
 
 export default Service.extend({
-  store : service(),
+  store: service(),
   all() {
     const adapter = getOwner(this).lookup('adapter:application');
     const options = adapter.ajaxOptions();
@@ -17,9 +17,9 @@ export default Service.extend({
     return new RSVPPromise((resolve) => {
       ajax(options).then((data) => {
         resolve(data);
-      }, jqXHR => {
+      }, (jqXHR) => {
         reject(null);
       });
     });
-  },
+  }
 });

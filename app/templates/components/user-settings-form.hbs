@@ -2,7 +2,7 @@
   {{#if countries}}
     <div class="form-group">
       <label> Primary Country </label>
-      <select class="form-control">
+      <select class="form-control country-select">
         {{#each countries as |country|}}
           <option value={{country.code}}> {{country.name}} ({{country.code}}) </option>
         {{/each}}
@@ -17,7 +17,7 @@
   {{#if timezones}}
     <div class="form-group">
       <label> Current Timezone </label>
-      <select class="form-control">
+      <select class="form-control timezone-select">
         {{#each timezones as |timezone|}}
           <option value={{timezone.code}}> {{timezone.name}} </option>
         {{/each}}
@@ -29,7 +29,7 @@
     <br>
   {{/if}}
 
-  <button type="submit" class="btn btn-primary">
+  <button type="submit" class="btn btn-primary" {{action 'updateUserSettings'}}>
     All set, get me started!
   </button>
 </form>

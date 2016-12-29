@@ -3,8 +3,9 @@ import Ember from 'ember';
 const { Component, inject: { service } } = Ember;
 
 export default Component.extend({
-  countriesService : service(),
-  timezonesService : service(),
+  countriesService   : service(),
+  timezonesService   : service(),
+  currentUserService : service(),
 
   didInsertElement() {
     this.get('countriesService').all().then((countries) => {
@@ -14,8 +15,16 @@ export default Component.extend({
     });
     this.get('timezonesService').all().then((timezones) => {
       this.set('timezones', timezones.map((timezone) => {
-        return { name: timezone[0], code: timezone[1]}
+        return { name: timezone[0], code: timezone[1] };
       }));
     });
+  },
+  actions: {
+    updateUserSettings() {
+      this.get('currentUserService')._syncCurrentUser({
+        country  : $('.country-select').val(),
+        timezone : $('.timezone-select').val()
+      });
+    }
   }
 });
