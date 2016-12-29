@@ -14,6 +14,8 @@ export default Service.extend({
     this.get('store').query('user', { auth_id: authID }).then((users) => {
       users.forEach((user) => {
         if (user.get('data.authId') === authID) {
+          country  = country  || user.get('country');
+          timezone = timezone || user.get('timezone');
           user.set('email', email);
           user.set('avatar', pic);
           user.set('country', country);
