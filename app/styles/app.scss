@@ -2,6 +2,21 @@ $light-gray: #f1f1f1;
 $yalla-secondary: #FBECCF;
 $yalla-primary: #112378;
 
+nav.bg-user {
+  background-color: $yalla-primary;
+  .nav-link { color: white !important; }
+}
+
+nav.bg-owner {
+  background-color: $yalla-secondary;
+  .nav-link { color: $yalla-primary !important; }
+}
+
+nav .nav-link > img.logo {
+  height: 50px;
+  margin-top: -1em;
+}
+
 a, .link {
   cursor: pointer;
 }
@@ -61,5 +76,5 @@ a, .link {
     color: $yalla-secondary;
     border: solid 2px white !important;
     cursor: pointer;
-  }  
+  }
 }
