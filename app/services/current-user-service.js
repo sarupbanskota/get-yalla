@@ -5,6 +5,7 @@ const { Service, inject: { service } } = Ember;
 export default Service.extend({
   session : service(),
   store   : service(),
+  routing : service('-routing'),
 
   _syncCurrentUser({authID, email, pic, country, timezone} = {null, null, null, null, null}) {
     pic    = this.get('session.session.content.authenticated.profile.picture');
@@ -18,9 +19,14 @@ export default Service.extend({
           user.set('country', country);
           user.set('timezone', timezone);
           user.save().then(() => {
-            alert('updated!');
+            console.log('updated!');
+            if (!(timezone || country)) {
+              this.get("routing").transitionTo('welcome');
+            } else {
+              this.get("routing").transitionTo('requests');
+            }
           }, () => {
-            alert('couldnt update :(');
+            console.log('couldnt update :(');
           });
         }
       });
