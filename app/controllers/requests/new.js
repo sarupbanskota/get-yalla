@@ -20,8 +20,7 @@ export default Controller.extend({
         from        : this.get('from'),
         to          : this.get('to'),
         status      : 'Pending',
-        description : this.get('description'),
-        username    : this.get('session.session.content.authenticated.profile.name')
+        description : this.get('description')
       }).save().then(() => {
         this.set('from', new Date());
         this.set('to', new Date());
