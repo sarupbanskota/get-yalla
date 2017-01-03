@@ -5,5 +5,5 @@ const { JSONAPIAdapter } = DS;
 
 export default JSONAPIAdapter.extend(DataAdapterMixin, {
   authorizer : 'authorizer:auth0-authorizer',
-  host       : 'https://178.62.88.113'
+  host       : 'https://178.62.88.113.xip.io'
 });
