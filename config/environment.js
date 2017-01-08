@@ -3,7 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     featureFlags: {
-      'calendar': false,
+      'calendar': true,
       'teams': false,
       'requestSorting': false
     },
