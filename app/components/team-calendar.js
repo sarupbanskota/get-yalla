@@ -19,9 +19,10 @@ export default Component.extend({
     if (!this.get('data')) {
       this.get('calendarEvents').all().then((data) => {
         this.set('data', data);
-        console.log($('#sbanskota08-09-01-2017'));
         this.fillCalendar();
       });
+    } else {
+      this.fillCalendar();
     }
   },
 
