@@ -33,7 +33,10 @@
     <tbody>
       {{#each data as |user|}}
         <tr>
-          <td> {{user.username}} </td>
+          <td>
+            <img src={{user.avatar}} alt={{user.username}} height="30px">
+            {{user.username}}
+          </td>
           {{#each viewingPeriod as |day|}}
             <td id="{{user.username}}-{{day}}" class="{{moment-format day 'dddd' 'DD-MM-YYYY'}}">
               <small class='text-muted'></small>

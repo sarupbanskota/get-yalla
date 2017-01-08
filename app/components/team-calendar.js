@@ -60,16 +60,15 @@ export default Component.extend({
   fillCalendar() {
     let startOfPeriod = this.get('startOfPeriod');
     let endOfPeriod = this.get('endOfPeriod');
-    this.get('data').forEach((user) => {
-      user.requests.forEach((request) => {
-        let fromMoment = moment(request.from);
-        let toMoment = moment(request.to);
+    run.schedule('afterRender', () => {
+      this.get('data').forEach((user) => {
+        user.requests.forEach((request) => {
+          let fromMoment = moment(request.from);
+          let toMoment = moment(request.to);
+          if (fromMoment.isBetween(startOfPeriod, endOfPeriod)) {
+            let soonerDate = toMoment.isSameOrBefore(endOfPeriod) ? toMoment : endOfPeriod;
+            let duration = Math.abs(fromMoment.diff(soonerDate, 'days')) + 1;
 
-        if (fromMoment.isBetween(startOfPeriod, endOfPeriod)) {
-          let soonerDate = toMoment.isSameOrBefore(endOfPeriod) ? toMoment : endOfPeriod;
-          let duration = Math.abs(fromMoment.diff(soonerDate, 'days')) + 1;
-
-          run.schedule('afterRender', () => {
             let userFromCell = $(`#${user.username}-${fromMoment.format('DD-MM-YYYY')}`);
             userFromCell.addClass('onVacation');
             userFromCell.attr('colspan', duration);
@@ -86,12 +85,12 @@ export default Component.extend({
               day = day.clone().add(1, 'd');
             }
             $('[data-toggle="tooltip"]').tooltip();
-          });
 
-        } else {
-          console.log('request is outside, no bother');
-        }
-      });
+          } else {
+            console.log('request is outside, no bother');
+          }
+        });
+      });      
     });
   }
 });
