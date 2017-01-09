@@ -13,20 +13,21 @@ export default Component.extend({
 
   init() {
     this._super();
-    this.updateViewingPeriod();
+    this._updateViewingPeriod();
   },
   didRender() {
     if (!this.get('data')) {
       this.get('calendarEvents').all().then((data) => {
         this.set('data', data);
-        this.fillCalendar();
+        this._fillCalendar();
       });
     } else {
-      this.fillCalendar();
+      this._fillCalendar();
     }
   },
 
   actions: {
+    // month/week, and prev/next
     changePeriod(unit, direction) {
       if (unit) {
         this.set('unit', unit);
@@ -37,11 +38,11 @@ export default Component.extend({
         this.set('startOfPeriod', this.get('startOfPeriod').add(direction, this.get('unit')));
         this.set('endOfPeriod',   this.get('endOfPeriod').add(direction, this.get('unit')));
       }
-      this.updateViewingPeriod();
+      this._updateViewingPeriod();
     }
   },
 
-  updateViewingPeriod() {
+  _updateViewingPeriod() {
     if (!(this.get('startOfPeriod') && this.get('endOfPeriod'))) {
       this.set('startOfPeriod', moment().startOf(this.get('unit')));
       this.set('endOfPeriod',   moment().endOf(this.get('unit')));
@@ -57,7 +58,7 @@ export default Component.extend({
 
     this.set('viewingPeriod', daysInPeriod);
   },
-  fillCalendar() {
+  _fillCalendar() {
     let startOfPeriod = this.get('startOfPeriod');
     let endOfPeriod = this.get('endOfPeriod');
     run.schedule('afterRender', () => {
@@ -66,10 +67,15 @@ export default Component.extend({
           let fromMoment = moment(request.from);
           let toMoment = moment(request.to);
           if (fromMoment.isBetween(startOfPeriod, endOfPeriod)) {
+            console.log("in between");
+            console.log(user);
+            console.log(request.description);
             let soonerDate = toMoment.isSameOrBefore(endOfPeriod) ? toMoment : endOfPeriod;
             let duration = Math.abs(fromMoment.diff(soonerDate, 'days')) + 1;
 
-            let userFromCell = $(`#${user.username}-${fromMoment.format('DD-MM-YYYY')}`);
+            let userFromCell = $(`#${user.identifier}-${fromMoment.format('DD-MM-YYYY')}`);
+            console.log(`#${user.identifier}-${fromMoment.format('DD-MM-YYYY')}`);
+            console.log(userFromCell);
             userFromCell.addClass('onVacation');
             userFromCell.attr('colspan', duration);
             userFromCell.attr('data-toggle', 'tooltip');
@@ -79,7 +85,7 @@ export default Component.extend({
 
             let day = fromMoment.add(1, 'd');
             while (day <= soonerDate) {
-              let userDayCell = $(`#${user.username}-${day.format('DD-MM-YYYY')}`);
+              let userDayCell = $(`#${user.identifier}-${day.format('DD-MM-YYYY')}`);
               userDayCell.remove();
               userDayCell.addClass('onVacation');
               day = day.clone().add(1, 'd');
@@ -90,7 +96,7 @@ export default Component.extend({
             console.log('request is outside, no bother');
           }
         });
-      });      
+      });
     });
   }
 });

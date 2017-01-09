@@ -38,7 +38,7 @@
             {{user.username}}
           </td>
           {{#each viewingPeriod as |day|}}
-            <td id="{{user.username}}-{{day}}" class="{{moment-format day 'dddd' 'DD-MM-YYYY'}}">
+            <td id="{{user.identifier}}-{{day}}" class="{{moment-format day 'dddd' 'DD-MM-YYYY'}}">
               <small class='text-muted'></small>
             </td>
           {{/each}}
