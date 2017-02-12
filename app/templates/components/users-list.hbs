@@ -3,36 +3,42 @@ Mesitis currently has {{users.length}} users on Yalla.
 <br>
 <div class='card-columns'>
   {{#each users as |user|}}
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title">
-          <img height="30px" src="{{user.avatar}}" alt="{{user.name}}">
-          <small> {{user.firstName}} {{user.lastName}} </small>
-        </h4>
-        <p>
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <th> Country </th>
-                <td> {{user.country}} </td>
-              </tr>
-              <tr>
-                <th> DOJ </th>
-                <td> {{moment-format user.DOJ 'D MMM YY'}} </td>
-              </tr>
-              <tr>
-                <th> Contract </th>
-                <td> {{user.contractType}} </td>
-              </tr>
-            </tbody>
-          </table>
-        </p>
-        <p class="card-text">
-          <small class="text-muted">
-            {{user.firstName}} has 3 leaves coming up
-          </small>
-        </p>
+    {{#link-to "user" user}}
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">
+            <img height="30px" src="{{user.avatar}}" alt="{{user.name}}">
+            <small>
+              {{#link-to "user" user}}
+                {{user.firstName}} {{user.lastName}}
+              {{/link-to}}
+            </small>
+          </h4>
+          <p>
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th> Country </th>
+                  <td> {{user.country}} </td>
+                </tr>
+                <tr>
+                  <th> DOJ </th>
+                  <td> {{moment-format user.DOJ 'D MMM YY'}} </td>
+                </tr>
+                <tr>
+                  <th> Contract </th>
+                  <td> {{user.contractType}} </td>
+                </tr>
+              </tbody>
+            </table>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              {{user.firstName}} has 3 leaves coming up
+            </small>
+          </p>
+        </div>
       </div>
-    </div>
+    {{/link-to}}
   {{/each}}
 </div>

@@ -13,10 +13,10 @@ Router.map(function() {
   this.route('requests', function() {
     this.route('new');
   });
-  // this.route('users');
   this.route('calendar');
   this.route('welcome');
   this.route('users');
+  this.route('user', { path: '/user/:id' });
 });
 
 export default Router;
