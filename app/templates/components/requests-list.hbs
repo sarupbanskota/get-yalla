@@ -1,7 +1,9 @@
 <table class="table">
   <thead>
     <tr>
-      {{#if isOwner}} <th class='regular-column'> User </th> {{/if}}
+      {{#if isOwner}}
+        {{#unless userPage}} <th class='regular-column'> User </th> {{/unless}}
+      {{/if}}
       <th class='regular-column'> Dates </th>
       <th class='big-mac-column'> Description </th>
       <th>
@@ -13,10 +15,12 @@
     {{#each requests as |request|}}
       <tr>
         {{#if isOwner}}
-          <th class='regular-column'>
-            <img src="{{request.requestedByAvatar}}" alt="{{request.username}}" height="30px">
-            {{request.requestedBy}}
-          </th>
+          {{#unless userPage}}
+            <th class='regular-column'>
+              <img src="{{request.requestedByAvatar}}" alt="{{request.username}}" height="30px">
+              {{request.requestedBy}}
+            </th>
+          {{/unless}}
         {{/if}}
         <td class='regular-column'>
           {{moment-format request.from 'DD MMM'}} → {{moment-format request.to 'DD MMM'}}

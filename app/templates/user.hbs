@@ -1,4 +1,17 @@
-{{model.firstName}} {{model.lastName}} <br> <br>
+<h3>
+  <img height="30px" src="{{user.avatar}}" alt="{{user.name}}">
+  {{model.firstName}} {{model.lastName}}
+</h3>
+
+<br>
+<br>
+
+<h5> Request log </h5>
+{{requests-list requests=model.requests userPage=true}}
+
+
+<br>
+<br>
 
 {{model.country}} <br>
 {{model.timezone}}

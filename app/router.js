@@ -16,7 +16,7 @@ Router.map(function() {
   this.route('calendar');
   this.route('welcome');
   this.route('users');
-  this.route('user', { path: '/user/:id' });
+  this.route('user', { path: '/users/:id' });
 });
 
 export default Router;
