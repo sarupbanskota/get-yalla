@@ -9,16 +9,23 @@ Mesitis currently has {{users.length}} users on Yalla.
           <img height="30px" src="{{user.avatar}}" alt="{{user.name}}">
           <small> {{user.firstName}} <span class="text-muted"> {{user.lastName}} </span> </small>
         </h4>
-        <p class="card-text">
-          <ul>
-            <li> {{user.country}} </li>
-            <li>
-              Joined {{moment-format user.DOJ 'D MMM YY'}}
-              <small class="text-muted"> ({{moment-to-now user.DOJ hidePrefix=true}} ago) </small>
-            </li>
-            <li> On {{user.contractType}} contract </li>
-          </ul>
-
+        <p>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th> Country </th>
+                <td> {{user.country}} </td>
+              </tr>
+              <tr>
+                <th> DOJ </th>
+                <td> {{moment-format user.DOJ 'D MMM YY'}} </td>
+              </tr>
+              <tr>
+                <th> Contract </th>
+                <td> {{user.contractType}} </td>
+              </tr>
+            </tbody>
+          </table>
         </p>
         <p class="card-text">
           <small class="text-muted">

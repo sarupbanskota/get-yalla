@@ -8,14 +8,14 @@
                  class="d-inline-block logo" alt="">
           </a>
           {{#if session.isAuthenticated}}
-          {{#link-to 'requests' class='nav-item nav-link'}} Requests {{/link-to}}
-          {{#if features.calendar}}
-            {{#link-to 'calendar' class='nav-item nav-link'}} Calendar {{/link-to}}
-          {{/if}}
-          {{#if features.teams}}
-            {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
-          {{/if}}
-          <!-- {{#link-to 'users' class='nav-item nav-link'}} Users {{/link-to}} -->
+            {{#link-to 'requests' class='nav-item nav-link'}} Requests {{/link-to}}
+            {{#if features.calendar}}
+              {{#link-to 'calendar' class='nav-item nav-link'}} Calendar {{/link-to}}
+            {{/if}}
+            {{#if features.teams}}
+              {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
+            {{/if}}
+            {{#link-to 'users' class='nav-item nav-link'}} Users {{/link-to}}
             <a href='#' class='nav-item nav-link float-xs-right' {{action 'logout'}}> Logout </a>
             <a class='nav-item nav-link float-xs-right'>
               <img src="{{session.data.authenticated.profile.picture}}" class="rounded-circle" height="25">
