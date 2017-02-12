@@ -67,15 +67,10 @@ export default Component.extend({
           let fromMoment = moment(request.from);
           let toMoment = moment(request.to);
           if (fromMoment.isBetween(startOfPeriod, endOfPeriod)) {
-            console.log("in between");
-            console.log(user);
-            console.log(request.description);
             let soonerDate = toMoment.isSameOrBefore(endOfPeriod) ? toMoment : endOfPeriod;
             let duration = Math.abs(fromMoment.diff(soonerDate, 'days')) + 1;
 
             let userFromCell = $(`#${user.identifier}-${fromMoment.format('DD-MM-YYYY')}`);
-            console.log(`#${user.identifier}-${fromMoment.format('DD-MM-YYYY')}`);
-            console.log(userFromCell);
             userFromCell.addClass('onVacation');
             userFromCell.attr('colspan', duration);
             userFromCell.attr('data-toggle', 'tooltip');

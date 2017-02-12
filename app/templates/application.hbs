@@ -3,10 +3,11 @@
     <div class='row'>
       <nav class="navbar">
         <div class="nav navbar-nav">
-          <a class="nav-item nav-link active" href="#">
+          <a class="nav-item nav-link active" href="/">
             <img src="/{{userRole}}-logo.svg"
                  class="d-inline-block logo" alt="">
           </a>
+          {{#if session.isAuthenticated}}
           {{#link-to 'requests' class='nav-item nav-link'}} Requests {{/link-to}}
           {{#if features.calendar}}
             {{#link-to 'calendar' class='nav-item nav-link'}} Calendar {{/link-to}}
@@ -15,14 +16,13 @@
             {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
           {{/if}}
           <!-- {{#link-to 'users' class='nav-item nav-link'}} Users {{/link-to}} -->
-          {{#if session.isAuthenticated}}
             <a href='#' class='nav-item nav-link float-xs-right' {{action 'logout'}}> Logout </a>
             <a class='nav-item nav-link float-xs-right'>
               <img src="{{session.data.authenticated.profile.picture}}" class="rounded-circle" height="25">
               {{session.data.authenticated.profile.given_name}}
             </a>
           {{else}}
-            {{#link-to 'index' class='nav-item nav-link float-xs-right'}} Login {{/link-to}}
+            <!-- {{#link-to 'index' class='nav-item nav-link float-xs-right'}} Login {{/link-to}} -->
           {{/if}}
         </div>
       </nav>
