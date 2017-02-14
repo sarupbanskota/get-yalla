@@ -17,7 +17,7 @@
   <h4> New category form </h4>
   {{input value=newCategoryName placeholder='Name'}}
   <br>  <br>
-  {{input value=newCategoryColor placeholder='Color'}}
+  {{spectrum-color-picker color=newCategoryColor preferredFormat='hex'}}
   <br>  <br>
   <button class='btn btn-success' {{action 'createNewCategory'}}> Create </button>
 {{/if}}
