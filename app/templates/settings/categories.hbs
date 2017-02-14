@@ -6,19 +6,19 @@
 {{#each model as |category|}}
   <span style='background-color: {{category.color}}'> &nbsp; </span>
   &nbsp;
-  {{category.name}}
+  <span {{action 'toggleCategoryForm' category.id}}> {{category.name}} </span>
   <br>
 {{/each}}
 
 <br>
 <br>
 
-{{#if showingNewCategoryForm}}
+{{#if showingCategoryForm}}
   <h4> New category form </h4>
-  {{input value=newCategoryName placeholder='Name'}}
+  {{input value=categoryName placeholder='Name'}}
   <br>  <br>
-  {{spectrum-color-picker color=newCategoryColor preferredFormat='hex'}}
+  {{spectrum-color-picker color=categoryColor preferredFormat='hex'}}
   <br>  <br>
-  <button class='btn btn-success' {{action 'createNewCategory'}}> Create </button>
+  <button class='btn btn-success' {{action 'createOrEditCategory' editingCategoryId}}> Create </button>
 {{/if}}
-<button class='btn' {{action 'toggleNewCategoryForm'}}> {{buttonMessage}} </button>
+<button class='btn' {{action 'toggleCategoryForm'}}> {{buttonMessage}} </button>
