@@ -1,1 +1,24 @@
 <h3> Categories </h3>
+
+<br>
+<br>
+
+{{#each model as |category|}}
+  <span style='background-color: {{category.color}}'> &nbsp; </span>
+  &nbsp;
+  {{category.name}}
+  <br>
+{{/each}}
+
+<br>
+<br>
+
+{{#if showingNewCategoryForm}}
+  <h4> New category form </h4>
+  {{input value=newCategoryName placeholder='Name'}}
+  <br>  <br>
+  {{input value=newCategoryColor placeholder='Color'}}
+  <br>  <br>
+  <button class='btn btn-success' {{action 'createNewCategory'}}> Create </button>
+{{/if}}
+<button class='btn' {{action 'toggleNewCategoryForm'}}> {{buttonMessage}} </button>
