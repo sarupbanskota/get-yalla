@@ -16,6 +16,9 @@
               {{#link-to 'teams' class='nav-item nav-link'}} Teams {{/link-to}}
             {{/if}}
             {{#link-to 'users' class='nav-item nav-link'}} Users {{/link-to}}
+            {{#if (eq userRole 'owner')}}
+              {{#link-to 'settings' class='nav-item nav-link'}} Settings {{/link-to}}
+            {{/if}}
             <a href='#' class='nav-item nav-link float-xs-right' {{action 'logout'}}> Logout </a>
             <a class='nav-item nav-link float-xs-right'>
               <img src="{{session.data.authenticated.profile.picture}}" class="rounded-circle" height="25">

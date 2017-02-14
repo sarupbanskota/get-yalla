@@ -17,6 +17,9 @@ Router.map(function() {
   this.route('welcome');
   this.route('users');
   this.route('user', { path: '/users/:id' });
+  this.route('settings', function() {
+    this.route('categories');
+  });
 });
 
 export default Router;
